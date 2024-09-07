@@ -15,11 +15,16 @@ public class ToDodo extends JFrame {
         titleBar.setPreferredSize(new Dimension(100, 50));
         titleBar.setLayout(new BorderLayout());
 
-        JPanel iconAndTitle = new JPanel(new FlowLayout(FlowLayout.RIGHT, 5, 0));
-        iconAndTitle.setOpaque(false);
+        ImageIcon img = new ImageIcon("sources/tododoIcon.png");
+        Image image = img.getImage();
+        Image resizedImage = image.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+        ImageIcon resizedImg = new ImageIcon(resizedImage);
 
-        JLabel icon = new JLabel(new ImageIcon("resources/tododo.png"));
-        JLabel title = new JLabel("ToDodo");
+        JLabel titleIcon = new JLabel();
+        titleIcon.setHorizontalAlignment(SwingConstants.LEFT);
+        titleIcon.setText("ToDodo");
+        titleIcon.setIcon(resizedImg);
+        titleIcon.setVisible(true);
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
         buttonPanel.setOpaque(false);
@@ -66,25 +71,23 @@ public class ToDodo extends JFrame {
             }
         });
 
-        title.setVisible(true);
-        icon.setVisible(true);
-        iconAndTitle.add(title);
-        iconAndTitle.add(icon);
         closeButton.setVisible(true);
         minimizeButton.setVisible(true);
         buttonPanel.setVisible(true);
 
         buttonPanel.add(minimizeButton);
         buttonPanel.add(closeButton);
-        titleBar.add(buttonPanel);
-        titleBar.add(iconAndTitle, BorderLayout.WEST);
+        titleBar.add(titleIcon, BorderLayout.WEST);
+        titleBar.add(buttonPanel, BorderLayout.EAST);
 
         titleBar.setVisible(true);
+        this.setLayout(new BorderLayout());
         this.add(titleBar, BorderLayout.NORTH);
         this.setSize(1000, 700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+
 
     }
 
