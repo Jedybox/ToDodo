@@ -5,6 +5,9 @@ import java.awt.event.MouseEvent;
 
 public class ToDodo extends JFrame {
     private Point initialClick;
+    private JButton homeButton;
+    private JButton addNoteButton;
+    private JButton settingsButton;
 
     ToDodo () {
 
@@ -12,36 +15,27 @@ public class ToDodo extends JFrame {
 
         JPanel titleBar = new JPanel();
         titleBar.setBackground(Color.decode("#DEDCD8"));
-        titleBar.setPreferredSize(new Dimension(100, 50));
+        titleBar.setPreferredSize(new Dimension(100, 40));
         titleBar.setLayout(new BorderLayout());
 
-        ImageIcon img = new ImageIcon("sources/tododoIcon.png");
-        Image image = img.getImage();
-        Image resizedImage = image.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
-        ImageIcon resizedImg = new ImageIcon(resizedImage);
-
-        JLabel titleIcon = new JLabel();
-        titleIcon.setHorizontalAlignment(SwingConstants.LEFT);
-        titleIcon.setText("ToDodo");
-        titleIcon.setIcon(resizedImg);
-        titleIcon.setVisible(true);
+        JLabel titleIcon = getIcon();
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
         buttonPanel.setOpaque(false);
 
-        JButton closeButton = new JButton("X");
+        JButton closeButton = new JButton("x");
         closeButton.setForeground(Color.WHITE);
         closeButton.setBackground(Color.RED);
         closeButton.setFocusPainted(false);
         closeButton.setBorderPainted(false);
-        closeButton.setPreferredSize(new Dimension(50, 50));
+        closeButton.setPreferredSize(new Dimension(50, 40));
 
         JButton minimizeButton = new JButton("-");
         minimizeButton.setForeground(Color.WHITE);
         minimizeButton.setBackground(Color.GRAY);
         minimizeButton.setFocusPainted(false);
         minimizeButton.setBorderPainted(false);
-        minimizeButton.setPreferredSize(new Dimension(50, 50));
+        minimizeButton.setPreferredSize(new Dimension(50, 40));
 
         closeButton.addActionListener(e -> System.exit(0));
         minimizeButton.addActionListener(e -> setState(JFrame.ICONIFIED));
@@ -71,6 +65,16 @@ public class ToDodo extends JFrame {
             }
         });
 
+        JPanel sidePanel = new JPanel();
+        sidePanel.setPreferredSize(new Dimension(100, 100));
+        sidePanel.setBackground(Color.GREEN);
+        sidePanel.setLayout(new GridLayout(5, 1, 3, 5));
+        sidePanel.setBackground(Color.decode("#DEDCD8"));
+
+        JPanel underPanel = new JPanel();
+        underPanel.setPreferredSize(new Dimension(100, 1));
+
+        sidePanel.setVisible(true);
         closeButton.setVisible(true);
         minimizeButton.setVisible(true);
         buttonPanel.setVisible(true);
@@ -81,18 +85,28 @@ public class ToDodo extends JFrame {
         titleBar.add(buttonPanel, BorderLayout.EAST);
 
         titleBar.setVisible(true);
-        this.setLayout(new BorderLayout());
+        this.setLayout(new BorderLayout(10, 10));
         this.add(titleBar, BorderLayout.NORTH);
+        this.add(sidePanel, BorderLayout.WEST);
+        this.add(underPanel, BorderLayout.SOUTH);
         this.setSize(1000, 700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-
-
     }
 
-    public static void main(String[] args) {
-        new ToDodo();
-    }
+    private static JLabel getIcon() {
+        ImageIcon img = new ImageIcon("sources/tododoIcon.png");
+        Image image = img.getImage();
+        Image resizedImage = image.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        ImageIcon resizedImg = new ImageIcon(resizedImage);
 
+        JLabel titleIcon = new JLabel();
+        titleIcon.setHorizontalAlignment(SwingConstants.LEFT);
+        titleIcon.setText("ToDodo");
+        titleIcon.setVerticalTextPosition(SwingConstants.CENTER);
+        titleIcon.setIcon(resizedImg);
+        titleIcon.setVisible(true);
+        return titleIcon;
+    }
 }
