@@ -1,9 +1,11 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ToDodo extends JFrame {
+public class ToDodo extends JFrame implements ActionListener {
     private Point initialClick;
     private JButton homeButton;
     private JButton addNoteButton;
@@ -65,11 +67,28 @@ public class ToDodo extends JFrame {
             }
         });
 
+        homeButton = new JButton();
+        addNoteButton = new JButton();
+        settingsButton = new JButton();
+
+        JPanel upperSidePanel = new JPanel();
+        upperSidePanel.setLayout(new BoxLayout(upperSidePanel, BoxLayout.Y_AXIS));
+        upperSidePanel.add(homeButton);
+        upperSidePanel.add(addNoteButton);
+        upperSidePanel.setPreferredSize(new Dimension(100, 400));
+
+        JPanel lowerSidePanel = new JPanel();
+        lowerSidePanel.setLayout(new BoxLayout(lowerSidePanel, BoxLayout.Y_AXIS));
+        lowerSidePanel.add(settingsButton);
+
         JPanel sidePanel = new JPanel();
+        sidePanel.setLayout(new BorderLayout(5, 5));
+        sidePanel.add(upperSidePanel, BorderLayout.NORTH);
+        sidePanel.add(lowerSidePanel, BorderLayout.SOUTH);
+        sidePanel.setOpaque(false);
         sidePanel.setPreferredSize(new Dimension(100, 100));
-        sidePanel.setBackground(Color.GREEN);
-        sidePanel.setLayout(new GridLayout(5, 1, 3, 5));
         sidePanel.setBackground(Color.decode("#DEDCD8"));
+        sidePanel.setBorder(new EmptyBorder(10, 10, 10 , 10));
 
         JPanel underPanel = new JPanel();
         underPanel.setPreferredSize(new Dimension(100, 1));
@@ -84,8 +103,9 @@ public class ToDodo extends JFrame {
         titleBar.add(titleIcon, BorderLayout.WEST);
         titleBar.add(buttonPanel, BorderLayout.EAST);
 
+        this.setTitle("ToDodo");
         titleBar.setVisible(true);
-        this.setLayout(new BorderLayout(10, 10));
+        this.setLayout(new BorderLayout());
         this.add(titleBar, BorderLayout.NORTH);
         this.add(sidePanel, BorderLayout.WEST);
         this.add(underPanel, BorderLayout.SOUTH);
@@ -93,6 +113,10 @@ public class ToDodo extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(java.awt.event.ActionEvent e) {
     }
 
     private static JLabel getIcon() {
@@ -107,6 +131,7 @@ public class ToDodo extends JFrame {
         titleIcon.setVerticalTextPosition(SwingConstants.CENTER);
         titleIcon.setIcon(resizedImg);
         titleIcon.setVisible(true);
+
         return titleIcon;
     }
 }
