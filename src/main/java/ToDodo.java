@@ -71,6 +71,10 @@ public class ToDodo extends JFrame implements ActionListener {
         addNoteButton = new JButton();
         settingsButton = new JButton();
 
+        homeButton.setText("Home");
+        addNoteButton.setText("Add Note");
+        settingsButton.setText("Settings");
+
         JPanel upperSidePanel = new JPanel();
         upperSidePanel.setLayout(new BoxLayout(upperSidePanel, BoxLayout.Y_AXIS));
         upperSidePanel.add(homeButton);
@@ -117,6 +121,9 @@ public class ToDodo extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
+        if (e.getSource() == homeButton) System.out.println("Home Nigger");
+        else if (e.getSource() == addNoteButton) System.out.println("Add Nigger");
+        else if (e.getSource() == settingsButton) System.out.println("");
     }
 
     private static JLabel getIcon() {
