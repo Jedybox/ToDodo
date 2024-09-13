@@ -10,6 +10,7 @@ public class DodoButton extends JButton {
          setFocusPainted(false);
          setContentAreaFilled(false);
          setBorderPainted(false);
+         setForeground(Color.decode("#21a6de"));
     }
 
     @Override
@@ -25,6 +26,15 @@ public class DodoButton extends JButton {
         int x = (getWidth() - fm.stringWidth(getText())) / 2;
         int y = (getHeight() + fm.getAscent()) / 2 - 2;
         g2d.drawString(getText(), x, y);
+
+        if (getIcon() != null) {
+            Icon icon = getIcon();
+            int iconWidth = icon.getIconWidth();
+            int iconHeight = icon.getIconHeight();
+            int a = (getWidth() - iconWidth) / 2;
+            int b = (getHeight() - iconHeight) / 2;
+            icon.paintIcon(this, g2d, a, b);
+        }
 
         g2d.dispose();
         super.paintComponent(g);
@@ -55,6 +65,4 @@ public class DodoButton extends JButton {
         size.setSize(diameter, diameter);
         return size;
     }
-
-
 }
