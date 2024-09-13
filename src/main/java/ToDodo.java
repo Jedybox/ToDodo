@@ -7,9 +7,9 @@ import java.awt.event.MouseEvent;
 
 public class ToDodo extends JFrame implements ActionListener {
     private Point initialClick;
-    private JButton homeButton;
-    private JButton addNoteButton;
-    private JButton settingsButton;
+    private final DodoButton homeButton;
+    private final DodoButton addNoteButton;
+    private final DodoButton settingsButton;
 
     ToDodo () {
 
@@ -67,22 +67,27 @@ public class ToDodo extends JFrame implements ActionListener {
             }
         });
 
-        homeButton = new JButton();
-        addNoteButton = new JButton();
-        settingsButton = new JButton();
+        homeButton = new DodoButton("Home");
+        addNoteButton = new DodoButton("Add");
+        settingsButton = new DodoButton("Settings");
 
-        homeButton.setText("Home");
-        addNoteButton.setText("Add Note");
-        settingsButton.setText("Settings");
+        homeButton.addActionListener(this);
+        addNoteButton.addActionListener(this);
+        settingsButton.addActionListener(this);
+
+        homeButton.setSize(50, 50);
+        addNoteButton.setSize(50, 50);
+        settingsButton.setSize(50, 50);
 
         JPanel upperSidePanel = new JPanel();
-        upperSidePanel.setLayout(new BoxLayout(upperSidePanel, BoxLayout.Y_AXIS));
+        upperSidePanel.setLayout(new GridLayout(2, 1, 0, 5));
         upperSidePanel.add(homeButton);
         upperSidePanel.add(addNoteButton);
-        upperSidePanel.setPreferredSize(new Dimension(100, 400));
+        upperSidePanel.setPreferredSize(new Dimension(70, 105));
 
         JPanel lowerSidePanel = new JPanel();
-        lowerSidePanel.setLayout(new BoxLayout(lowerSidePanel, BoxLayout.Y_AXIS));
+        lowerSidePanel.setPreferredSize(new Dimension(70, 50));
+        lowerSidePanel.setLayout(new GridLayout(1, 1, 0, 5));
         lowerSidePanel.add(settingsButton);
 
         JPanel sidePanel = new JPanel();
@@ -90,7 +95,7 @@ public class ToDodo extends JFrame implements ActionListener {
         sidePanel.add(upperSidePanel, BorderLayout.NORTH);
         sidePanel.add(lowerSidePanel, BorderLayout.SOUTH);
         sidePanel.setOpaque(false);
-        sidePanel.setPreferredSize(new Dimension(100, 100));
+        sidePanel.setPreferredSize(new Dimension(70, 100));
         sidePanel.setBackground(Color.decode("#DEDCD8"));
         sidePanel.setBorder(new EmptyBorder(10, 10, 10 , 10));
 
@@ -121,9 +126,9 @@ public class ToDodo extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
-        if (e.getSource() == homeButton) System.out.println("Home Nigger");
-        else if (e.getSource() == addNoteButton) System.out.println("Add Nigger");
-        else if (e.getSource() == settingsButton) System.out.println("");
+        if (e.getSource() == homeButton) System.out.println("Home");
+        else if (e.getSource() == addNoteButton) System.out.println("Add");
+        else if (e.getSource() == settingsButton) System.out.println("Setting");
     }
 
     private static JLabel getIcon() {
