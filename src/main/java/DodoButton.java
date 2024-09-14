@@ -11,6 +11,16 @@ public class DodoButton extends JButton {
          setContentAreaFilled(false);
          setBorderPainted(false);
          setForeground(Color.decode("#21a6de"));
+
+         setIcon(getButtonIcon(label));
+    }
+
+    private ImageIcon getButtonIcon(String iconName) {
+        String path = "sources/" + iconName + ".png";
+        ImageIcon img = new ImageIcon(path);
+        Image image = img.getImage();
+        Image resizedImage = image.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        return new ImageIcon(resizedImage);
     }
 
     @Override

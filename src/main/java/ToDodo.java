@@ -71,13 +71,6 @@ public class ToDodo extends JFrame implements ActionListener {
         addNoteButton = new DodoButton("Add");
         settingsButton = new DodoButton("Settings");
 
-        ImageIcon img1 = new ImageIcon("sources/homedodo.png");
-        Image image1 = img1.getImage();
-        Image resizedImage1 = image1.getScaledInstance(25, 25, Image.SCALE_SMOOTH);
-        ImageIcon resizedImg = new ImageIcon(resizedImage1);
-
-        homeButton.setIcon(resizedImg);
-
         homeButton.addActionListener(this);
         addNoteButton.addActionListener(this);
         settingsButton.addActionListener(this);
@@ -153,11 +146,4 @@ public class ToDodo extends JFrame implements ActionListener {
 
         return titleIcon;
     }
-
-//    private static ImageIcon getButtonIcon(String path) {
-//        ImageIcon img = new ImageIcon(path);
-//        Image image = img.getImage();
-//        Image resizedImage = image.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
-//        return new ImageIcon(resizedImage);
-//    }
 }
