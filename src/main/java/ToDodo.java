@@ -71,6 +71,10 @@ public class ToDodo extends JFrame implements ActionListener {
         addNoteButton = new DodoButton("Add");
         settingsButton = new DodoButton("Settings");
 
+        homeButton.setIcon(generateIcon("home", 25, 25));
+        addNoteButton.setIcon(generateIcon("add", 25, 25));
+        settingsButton.setIcon(generateIcon("settings", 25, 25));
+
         homeButton.addActionListener(this);
         addNoteButton.addActionListener(this);
         settingsButton.addActionListener(this);
@@ -132,10 +136,7 @@ public class ToDodo extends JFrame implements ActionListener {
     }
 
     private static JLabel getIcon() {
-        ImageIcon img = new ImageIcon("src/main/resources/tododoIcon.png");
-        Image image = img.getImage();
-        Image resizedImage = image.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-        ImageIcon resizedImg = new ImageIcon(resizedImage);
+        ImageIcon resizedImg = generateIcon("icon", 30, 30);
 
         JLabel titleIcon = new JLabel();
         titleIcon.setHorizontalAlignment(SwingConstants.LEFT);
@@ -145,5 +146,13 @@ public class ToDodo extends JFrame implements ActionListener {
         titleIcon.setVisible(true);
 
         return titleIcon;
+    }
+
+    private static ImageIcon generateIcon(String iconName, int width, int height) {
+        String path = "src/main/resources/" + iconName + ".png";
+        ImageIcon img = new ImageIcon(path);
+        Image image = img.getImage();
+        Image resizedImage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(resizedImage);
     }
 }
