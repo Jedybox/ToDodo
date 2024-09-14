@@ -25,14 +25,14 @@ public class ToDodo extends JFrame implements ActionListener {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
         buttonPanel.setOpaque(false);
 
-        JButton closeButton = new JButton("x");
+        JButton closeButton = new JButton("×");
         closeButton.setForeground(Color.WHITE);
         closeButton.setBackground(Color.RED);
         closeButton.setFocusPainted(false);
         closeButton.setBorderPainted(false);
         closeButton.setPreferredSize(new Dimension(50, 40));
 
-        JButton minimizeButton = new JButton("-");
+        JButton minimizeButton = new JButton("−");
         minimizeButton.setForeground(Color.WHITE);
         minimizeButton.setBackground(Color.GRAY);
         minimizeButton.setFocusPainted(false);
@@ -106,10 +106,17 @@ public class ToDodo extends JFrame implements ActionListener {
         JPanel underPanel = new JPanel();
         underPanel.setPreferredSize(new Dimension(100, 1));
 
+        JPanel contentPanel = new JPanel();
+        contentPanel.setLayout(new CardLayout());
+        contentPanel.setPreferredSize(new Dimension(100, 100));
+        contentPanel.setBackground(Color.decode("#DEDCD8"));
+
+        contentPanel.setVisible(true);
         sidePanel.setVisible(true);
         closeButton.setVisible(true);
         minimizeButton.setVisible(true);
         buttonPanel.setVisible(true);
+        titleBar.setVisible(true);
 
         buttonPanel.add(minimizeButton);
         buttonPanel.add(closeButton);
@@ -122,6 +129,7 @@ public class ToDodo extends JFrame implements ActionListener {
         this.add(titleBar, BorderLayout.NORTH);
         this.add(sidePanel, BorderLayout.WEST);
         this.add(underPanel, BorderLayout.SOUTH);
+        this.add(contentPanel, BorderLayout.CENTER);
         this.setSize(1000, 700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -130,9 +138,12 @@ public class ToDodo extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
-        if (e.getSource() == homeButton) System.out.println("Home");
-        else if (e.getSource() == addNoteButton) System.out.println("Add");
-        else if (e.getSource() == settingsButton) System.out.println("Setting");
+        if (e.getSource() == homeButton)
+            System.out.println("Home");
+        else if (e.getSource() == addNoteButton)
+            System.out.println("Add");
+        else if (e.getSource() == settingsButton)
+            System.out.println("Setting");
     }
 
     private static JLabel getIcon() {
