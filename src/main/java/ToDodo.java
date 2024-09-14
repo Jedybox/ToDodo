@@ -132,7 +132,7 @@ public class ToDodo extends JFrame implements ActionListener {
     }
 
     private static JLabel getIcon() {
-        ImageIcon img = new ImageIcon("sources/tododoIcon.png");
+        ImageIcon img = new ImageIcon("src/main/resources/tododoIcon.png");
         Image image = img.getImage();
         Image resizedImage = image.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
         ImageIcon resizedImg = new ImageIcon(resizedImage);

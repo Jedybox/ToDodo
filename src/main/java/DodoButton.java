@@ -16,7 +16,7 @@ public class DodoButton extends JButton {
     }
 
     private ImageIcon getButtonIcon(String iconName) {
-        String path = "sources/" + iconName + ".png";
+        String path = "src/main/resources/" + iconName + ".png";
         ImageIcon img = new ImageIcon(path);
         Image image = img.getImage();
         Image resizedImage = image.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
