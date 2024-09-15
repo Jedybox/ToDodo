@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.geom.RoundRectangle2D;
 
 public class ToDodo extends JFrame implements ActionListener {
     private Point initialClick;
@@ -144,6 +145,7 @@ public class ToDodo extends JFrame implements ActionListener {
         titleBar.add(titleIcon, BorderLayout.WEST);
         titleBar.add(buttonPanel, BorderLayout.EAST);
 
+        setShape(new RoundRectangle2D.Double(0, 0, 800, 600, 20, 20));
         this.setTitle("ToDodo");
         titleBar.setVisible(true);
         this.setLayout(new BorderLayout());
@@ -151,7 +153,7 @@ public class ToDodo extends JFrame implements ActionListener {
         this.add(sidePanel, BorderLayout.WEST);
         this.add(underPanel, BorderLayout.SOUTH);
         this.add(contentPanel, BorderLayout.CENTER);
-        this.setSize(1000, 700);
+        this.setSize(800, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
