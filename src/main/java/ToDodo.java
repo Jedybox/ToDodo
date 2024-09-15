@@ -10,6 +10,8 @@ public class ToDodo extends JFrame implements ActionListener {
     private final DodoButton homeButton;
     private final DodoButton addNoteButton;
     private final DodoButton settingsButton;
+    private final JPanel contentPanel;
+    private final CardLayout contentPanelCard;
 
     ToDodo () {
 
@@ -106,10 +108,29 @@ public class ToDodo extends JFrame implements ActionListener {
         JPanel underPanel = new JPanel();
         underPanel.setPreferredSize(new Dimension(100, 1));
 
-        JPanel contentPanel = new JPanel();
-        contentPanel.setLayout(new CardLayout());
+        contentPanelCard = new CardLayout();
+        contentPanel = new JPanel(contentPanelCard);
         contentPanel.setPreferredSize(new Dimension(100, 100));
         contentPanel.setBackground(Color.decode("#DEDCD8"));
+
+        JPanel homePanel = new JPanel();
+        JLabel homeTitle = new JLabel("Home");
+        homeTitle.setFont(new Font("Arial", Font.PLAIN, 20));
+        homePanel.add(homeTitle);
+
+        JPanel addPanel = new JPanel();
+        JLabel addTitle = new JLabel("Add");
+        addTitle.setFont(new Font("Arial", Font.PLAIN, 20));
+        addPanel.add(addTitle);
+
+        JPanel settingsPanel = new JPanel();
+        JLabel settingsTitle = new JLabel("Settings");
+        settingsTitle.setFont(new Font("Arial", Font.PLAIN, 20));
+        settingsPanel.add(settingsTitle);
+
+        contentPanel.add(homePanel, "Home");
+        contentPanel.add(addPanel, "Add");
+        contentPanel.add(settingsPanel, "Settings");
 
         contentPanel.setVisible(true);
         sidePanel.setVisible(true);
@@ -139,11 +160,11 @@ public class ToDodo extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         if (e.getSource() == homeButton)
-            System.out.println("Home");
+            contentPanelCard.show(contentPanel, "Home");
         else if (e.getSource() == addNoteButton)
-            System.out.println("Add");
+            contentPanelCard.show(contentPanel, "Add");
         else if (e.getSource() == settingsButton)
-            System.out.println("Setting");
+            contentPanelCard.show(contentPanel, "Settings");
     }
 
     private static JLabel getIcon() {
