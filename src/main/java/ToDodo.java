@@ -28,7 +28,7 @@ public class ToDodo extends JFrame implements ActionListener {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
         buttonPanel.setOpaque(false);
 
-        JButton closeButton = new JButton("×");
+        JButton closeButton = new JButton("x");
         closeButton.setForeground(Color.WHITE);
         closeButton.setBackground(Color.RED);
         closeButton.setFocusPainted(false);
@@ -74,27 +74,27 @@ public class ToDodo extends JFrame implements ActionListener {
         addNoteButton = new DodoButton("Add");
         settingsButton = new DodoButton("Settings");
 
-        homeButton.setIcon(generateIcon("home", 25, 25));
-        addNoteButton.setIcon(generateIcon("add", 25, 25));
-        settingsButton.setIcon(generateIcon("settings", 25, 25));
+        homeButton.setIcon(generateIcon("home", 20, 20));
+        addNoteButton.setIcon(generateIcon("add", 20, 20));
+        settingsButton.setIcon(generateIcon("settings", 20, 20));
 
         homeButton.addActionListener(this);
         addNoteButton.addActionListener(this);
         settingsButton.addActionListener(this);
 
-        homeButton.setSize(40, 40);
-        addNoteButton.setSize(40, 40);
-        settingsButton.setSize(40, 40);
+        homeButton.setSize(30, 30);
+        addNoteButton.setSize(30, 30);
+        settingsButton.setSize(30, 30);
 
         JPanel upperSidePanel = new JPanel();
         upperSidePanel.setLayout(new GridLayout(2, 1, 0, 5));
         upperSidePanel.add(homeButton);
         upperSidePanel.add(addNoteButton);
-        upperSidePanel.setPreferredSize(new Dimension(70, 105));
+        upperSidePanel.setPreferredSize(new Dimension(60, 90));
 
         JPanel lowerSidePanel = new JPanel();
-        lowerSidePanel.setPreferredSize(new Dimension(70, 50));
-        lowerSidePanel.setLayout(new GridLayout(1, 1, 0, 5));
+        lowerSidePanel.setPreferredSize(new Dimension(60, 40));
+        lowerSidePanel.setLayout(new GridLayout(1, 1, 0, 0));
         lowerSidePanel.add(settingsButton);
 
         JPanel sidePanel = new JPanel();
@@ -102,7 +102,7 @@ public class ToDodo extends JFrame implements ActionListener {
         sidePanel.add(upperSidePanel, BorderLayout.NORTH);
         sidePanel.add(lowerSidePanel, BorderLayout.SOUTH);
         sidePanel.setOpaque(false);
-        sidePanel.setPreferredSize(new Dimension(70, 100));
+        sidePanel.setPreferredSize(new Dimension(60, 100));
         sidePanel.setBackground(Color.decode("#DEDCD8"));
         sidePanel.setBorder(new EmptyBorder(10, 10, 10 , 10));
 
