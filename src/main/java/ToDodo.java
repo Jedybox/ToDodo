@@ -1,10 +1,12 @@
 import javax.swing.*;
+import javax.swing.JLabel;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
+import java.awt.FlowLayout;
 
 public class ToDodo extends JFrame implements ActionListener {
     private Point initialClick;
