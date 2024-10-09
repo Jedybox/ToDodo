@@ -15,6 +15,7 @@ public class ToDodo extends JFrame implements ActionListener {
     private final DodoButton settingsButton;
     private final JPanel contentPanel;
     private final CardLayout contentPanelCard;
+    private final Home homePanel;
 
     ToDodo () {
 
@@ -116,10 +117,7 @@ public class ToDodo extends JFrame implements ActionListener {
         contentPanel.setPreferredSize(new Dimension(100, 100));
         contentPanel.setBackground(Color.decode("#DEDCD8"));
 
-        JPanel homePanel = new JPanel();
-        JLabel homeTitle = new JLabel("Home");
-        homeTitle.setFont(new Font("Arial", Font.PLAIN, 20));
-        homePanel.add(homeTitle);
+        homePanel = new Home();
 
         JPanel addPanel = new JPanel();
         JLabel addTitle = new JLabel("Add");
@@ -147,7 +145,7 @@ public class ToDodo extends JFrame implements ActionListener {
         titleBar.add(titleIcon, BorderLayout.WEST);
         titleBar.add(buttonPanel, BorderLayout.EAST);
 
-        setShape(new RoundRectangle2D.Double(0, 0, 800, 600, 20, 20));
+        setShape(new RoundRectangle2D.Double(0, 0, 700, 600, 20, 20));
         this.setTitle("ToDodo");
         titleBar.setVisible(true);
         this.setLayout(new BorderLayout());
@@ -155,7 +153,7 @@ public class ToDodo extends JFrame implements ActionListener {
         this.add(sidePanel, BorderLayout.WEST);
         this.add(underPanel, BorderLayout.SOUTH);
         this.add(contentPanel, BorderLayout.CENTER);
-        this.setSize(800, 600);
+        this.setSize(700, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
