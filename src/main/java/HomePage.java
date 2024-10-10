@@ -10,10 +10,10 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
 
-public class Home extends JPanel implements ActionListener {
+public class HomePage extends JPanel implements ActionListener {
     private JButton allBtn, pendingBtn, completedBtn, sortDate;
 
-    Home() {
+    HomePage() {
 
         this.setPreferredSize(new Dimension(100, 100));
         this.setLayout(new BorderLayout());

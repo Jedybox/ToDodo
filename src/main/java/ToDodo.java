@@ -15,7 +15,8 @@ public class ToDodo extends JFrame implements ActionListener {
     private final DodoButton settingsButton;
     private final JPanel contentPanel;
     private final CardLayout contentPanelCard;
-    private final Home homePanel;
+    private final HomePage homePanel = new HomePage();
+    private final AddTodoPage addPanel = new AddTodoPage();
 
     ToDodo () {
 
@@ -116,13 +117,6 @@ public class ToDodo extends JFrame implements ActionListener {
         contentPanel = new JPanel(contentPanelCard);
         contentPanel.setPreferredSize(new Dimension(100, 100));
         contentPanel.setBackground(Color.decode("#DEDCD8"));
-
-        homePanel = new Home();
-
-        JPanel addPanel = new JPanel();
-        JLabel addTitle = new JLabel("Add");
-        addTitle.setFont(new Font("Arial", Font.PLAIN, 20));
-        addPanel.add(addTitle);
 
         JPanel settingsPanel = new JPanel();
         JLabel settingsTitle = new JLabel("Settings");
