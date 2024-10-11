@@ -1,3 +1,4 @@
+package pages;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
@@ -13,7 +14,7 @@ import java.awt.BorderLayout;
 public class HomePage extends JPanel implements ActionListener {
     private JButton allBtn, pendingBtn, completedBtn, sortDate;
 
-    HomePage() {
+    public HomePage() {
 
         this.setPreferredSize(new Dimension(100, 100));
         this.setLayout(new BorderLayout());

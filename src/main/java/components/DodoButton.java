@@ -1,10 +1,11 @@
+package components;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 
 public class DodoButton extends JButton {
 
-    DodoButton(String label) {
+    public DodoButton(String label) {
          super(label);
          setOpaque(false);
          setFocusPainted(false);

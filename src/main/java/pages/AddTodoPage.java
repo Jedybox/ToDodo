@@ -1,3 +1,4 @@
+package pages;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
@@ -8,7 +9,7 @@ public class AddTodoPage extends JPanel implements ActionListener {
     JTextField titleField;
     JTextArea descriptionField;
 
-    AddTodoPage() {
+    public AddTodoPage() {
 
     }
 
