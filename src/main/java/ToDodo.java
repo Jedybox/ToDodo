@@ -188,4 +188,9 @@ public class ToDodo extends JFrame implements ActionListener {
         Image resizedImage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         return new ImageIcon(resizedImage);
     }
+
+    public static void main(String[] args) {
+        new ToDodo();
+    }
+
 }
