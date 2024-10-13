@@ -160,9 +160,10 @@ public class ToDodo extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
-        if (e.getSource() == homeButton)
+        if (e.getSource() == homeButton) {
+            homePanel.updateList();
             contentPanelCard.show(contentPanel, "Home");
-        else if (e.getSource() == addNoteButton)
+        } else if (e.getSource() == addNoteButton)
             contentPanelCard.show(contentPanel, "Add");
         else if (e.getSource() == settingsButton)
             contentPanelCard.show(contentPanel, "Settings");
