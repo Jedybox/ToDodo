@@ -20,7 +20,7 @@ public class DataManager {
         ArrayList<ToDo> todos = new ArrayList<>();
         
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("todos.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/data/data.csv"));
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");

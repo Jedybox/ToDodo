@@ -1,11 +1,13 @@
 package pages;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import components.ToDo;
+import utils.DataManager;
 
-import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
 import java.awt.event.ActionEvent;
@@ -18,12 +20,17 @@ import java.awt.GridLayout;
 import java.awt.BorderLayout;
 
 public class HomePage extends JPanel implements ActionListener {
-    private final JButton allBtn, pendingBtn, completedBtn, sortDate;
+
+    private final String[] groupOptions = {"All", "Completed", "Uncompleted", "Personal", "Work", "School", "Other"};
+    private final JComboBox<String> groupedTodos = new JComboBox<>(groupOptions);
+
     private final JPanel contentPanel = new JPanel();
-    private ArrayList<ToDo> todos = new ArrayList<ToDo>();
+    private ArrayList<ToDo> todos = new ArrayList<>();
+
+    private final JScrollPane scrollPane = new JScrollPane(contentPanel);
 
     public HomePage() {
-
+        this.updateList();
         this.setPreferredSize(new Dimension(100, 100));
         this.setLayout(new BorderLayout());
 
@@ -35,44 +42,38 @@ public class HomePage extends JPanel implements ActionListener {
         title.setFont(new Font("Serif", Font.PLAIN, 20));
 
         JPanel btnPanel = new JPanel();
-        btnPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        btnPanel.setPreferredSize(new Dimension(100, 20));
-
-        this.allBtn = new JButton("All");
-        this.pendingBtn = new JButton("Pending");
-        this.completedBtn = new JButton("Completed");
-        this.sortDate = new JButton("Sort by newest");
-
-        allBtn.addActionListener(this);
-        pendingBtn.addActionListener(this);
-        completedBtn.addActionListener(this);
-        sortDate.addActionListener(this);
-
-        btnPanel.add(allBtn);
-        btnPanel.add(pendingBtn);
-        btnPanel.add(completedBtn);
-        btnPanel.add(sortDate);
+        btnPanel.setLayout(new FlowLayout(FlowLayout.TRAILING, 10, 10));
+        btnPanel.setPreferredSize(new Dimension(30, 20));
+        btnPanel.setBorder(new EmptyBorder(0, 10, 0, 30));
+        btnPanel.add(groupedTodos);
 
         headPanel.add(title);
         headPanel.add(btnPanel);
-
-        contentPanel.setPreferredSize(new Dimension(100, 100));
         
-        this.add(contentPanel, BorderLayout.CENTER);
+        scrollPane.setPreferredSize(new Dimension(100, 100));
+        scrollPane.setBorder(new EmptyBorder(10, 10, 10, 10));
+
+        this.add(scrollPane, BorderLayout.CENTER);
         this.add(headPanel, BorderLayout.NORTH);
+    }
+
+    private void updateContentPanel() {
+        this.contentPanel.removeAll();
+        this.todos.forEach(todo -> {
+            // this.contentPanel.add(todo);
+        });
+        this.contentPanel.revalidate();
+        this.contentPanel.repaint();
+    }
+
+    public void updateList() {
+        this.todos.clear();
+        this.todos.addAll(DataManager.load());
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == allBtn) {
-            System.out.println("All");
-        } else if (e.getSource() == pendingBtn) {
-            System.out.println("Pending");
-        } else if (e.getSource() == completedBtn) {
-            System.out.println("Completed");
-        } else if (e.getSource() == sortDate) {
-            System.out.println("Sort by newest");
-        }
+         
     }
 
 }
