@@ -182,7 +182,7 @@ public class ToDodo extends JFrame implements ActionListener {
     }
 
     private static ImageIcon generateIcon(String iconName, int width, int height) {
-        String path = "src/main/resources/" + iconName + ".png";
+        String path = "src/main/resources/pics/" + iconName + ".png";
         ImageIcon img = new ImageIcon(path);
         Image image = img.getImage();
         Image resizedImage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
