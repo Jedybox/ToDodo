@@ -144,7 +144,7 @@ public class ToDodo extends JFrame implements ActionListener {
         titleBar.add(titleIcon, BorderLayout.WEST);
         titleBar.add(buttonPanel, BorderLayout.EAST);
 
-        setShape(new RoundRectangle2D.Double(0, 0, 700, 600, 20, 20));
+        this.setShape(new RoundRectangle2D.Double(0, 0, 700, 600, 20, 20));
         this.setTitle("ToDodo");
         titleBar.setVisible(true);
         this.setLayout(new BorderLayout());

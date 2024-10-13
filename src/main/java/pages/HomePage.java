@@ -3,26 +3,24 @@ package pages;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import pages.subpages.AllTodo;
+import components.ToDo;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
-import java.awt.CardLayout;
 
 public class HomePage extends JPanel implements ActionListener {
     private final JButton allBtn, pendingBtn, completedBtn, sortDate;
-    private final CardLayout contentPanelCard = new CardLayout();
-    private final AllTodo allTodoPanel = new AllTodo();
-    private final JPanel pendingTodoPanel = new JPanel();
-    private final JPanel completedTodoPanel = new JPanel();
+    private final JPanel contentPanel = new JPanel();
+    private ArrayList<ToDo> todos = new ArrayList<ToDo>();
 
     public HomePage() {
 
@@ -58,11 +56,6 @@ public class HomePage extends JPanel implements ActionListener {
         headPanel.add(title);
         headPanel.add(btnPanel);
 
-        this.contentPanelCard.addLayoutComponent(allTodoPanel, "all");
-        this.contentPanelCard.addLayoutComponent(pendingTodoPanel, "pending");
-        this.contentPanelCard.addLayoutComponent(completedTodoPanel, "completed");
-
-        JPanel contentPanel = new JPanel(contentPanelCard);
         contentPanel.setPreferredSize(new Dimension(100, 100));
         
         this.add(contentPanel, BorderLayout.CENTER);
@@ -72,13 +65,13 @@ public class HomePage extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == allBtn) {
-            // Display all tasks
+            System.out.println("All");
         } else if (e.getSource() == pendingBtn) {
-            // Display pending tasks
+            System.out.println("Pending");
         } else if (e.getSource() == completedBtn) {
-            // Display completed tasks
+            System.out.println("Completed");
         } else if (e.getSource() == sortDate) {
-            // Sort tasks by date
+            System.out.println("Sort by newest");
         }
     }
 
