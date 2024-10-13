@@ -2,6 +2,9 @@ package pages;
 
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import pages.subpages.AllTodo;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -12,9 +15,14 @@ import java.awt.Font;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 
 public class HomePage extends JPanel implements ActionListener {
-    private JButton allBtn, pendingBtn, completedBtn, sortDate;
+    private final JButton allBtn, pendingBtn, completedBtn, sortDate;
+    private final CardLayout contentPanelCard = new CardLayout();
+    private final AllTodo allTodoPanel = new AllTodo();
+    private final JPanel pendingTodoPanel = new JPanel();
+    private final JPanel completedTodoPanel = new JPanel();
 
     public HomePage() {
 
@@ -50,6 +58,14 @@ public class HomePage extends JPanel implements ActionListener {
         headPanel.add(title);
         headPanel.add(btnPanel);
 
+        this.contentPanelCard.addLayoutComponent(allTodoPanel, "all");
+        this.contentPanelCard.addLayoutComponent(pendingTodoPanel, "pending");
+        this.contentPanelCard.addLayoutComponent(completedTodoPanel, "completed");
+
+        JPanel contentPanel = new JPanel(contentPanelCard);
+        contentPanel.setPreferredSize(new Dimension(100, 100));
+        
+        this.add(contentPanel, BorderLayout.CENTER);
         this.add(headPanel, BorderLayout.NORTH);
     }
 
