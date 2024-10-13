@@ -1,12 +1,11 @@
 package components;
 
 public class ToDo {
-    private String title, description, date, status, cathegory;
+    private String title, description, status, cathegory;
 
-    public ToDo(String title, String description, String date, String status, String cathegory) {
+    public ToDo(String title, String description, String cathegory, String status) {
         this.title = title;
         this.description = description;
-        this.date = date;
         this.status = status;
         this.cathegory = cathegory;
     }
@@ -19,15 +18,11 @@ public class ToDo {
         return description;
     }
 
-    public String getDate() {
-        return date;
-    }
-
     public String getStatus() {
         return status;
     }
 
-    public String getCathegory() {
+    public String getCategory() {
         return cathegory;
     }
 

@@ -1,6 +1,6 @@
 .idea/
 
-src/mian/resources/data/
+src/main/resources/data/data.csv
 
 target/
 !.mvn/wrapper/maven-wrapper.jar
