@@ -7,6 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -14,13 +15,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import components.PrimaryButton;
 import components.ToDo;
 
 import utils.DataManager;
 
-public class AddTodoPage extends JPanel implements ActionListener {
+public class AddTodoPage extends JPanel implements ActionListener, DocumentListener, MouseListener {
     
     private final Font customFont = new Font("Serif", Font.PLAIN, 16);
 
@@ -29,6 +32,9 @@ public class AddTodoPage extends JPanel implements ActionListener {
 
     private final JTextField titleField;
     private final JTextArea descriptionField;
+
+    private int descriptionFieldLength = 0;
+    private int titleFieldLength = 0;
     
     private final PrimaryButton addBtn = new PrimaryButton("Add to list");
     private final PrimaryButton cancelBtn = new PrimaryButton("Cancel");
@@ -37,6 +43,7 @@ public class AddTodoPage extends JPanel implements ActionListener {
         titleField = new JTextField();
         titleField.setText("Title");
         titleField.setPreferredSize(new Dimension(100, 30));
+        titleField.getDocument().addDocumentListener(this);
 
         descriptionField = new JTextArea();
         descriptionField.setPreferredSize(new Dimension(100, 100));
@@ -44,6 +51,7 @@ public class AddTodoPage extends JPanel implements ActionListener {
         descriptionField.setLineWrap(true);
         descriptionField.setWrapStyleWord(true);
         descriptionField.setFont(customFont);
+        descriptionField.getDocument().addDocumentListener(this);
 
         JPanel cathegoryPanel = new JPanel();
         cathegoryPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 10, 10));
@@ -69,6 +77,8 @@ public class AddTodoPage extends JPanel implements ActionListener {
         cancelBtn.addActionListener(this);
         cancelBtn.setBackground(Color.decode("#ffffff"));
         cancelBtn.setForeground(Color.decode("#007bff"));
+
+        addBtn.setEnabled(false);
 
         this.setLayout(new BorderLayout());
         this.add(titlePanel, BorderLayout.NORTH);
@@ -105,6 +115,57 @@ public class AddTodoPage extends JPanel implements ActionListener {
         } else if (e.getSource() == cancelBtn) {
             System.out.println("Cancel button clicked");
         }
+    }
+
+    @Override
+    public void insertUpdate(DocumentEvent e) {
+        if (e.getDocument() == titleField.getDocument()) {
+            titleUpdate();
+        } else if (e.getDocument() == descriptionField.getDocument()) {
+            descriptionFieldLength = descriptionField.getText().length();
+        }
+    }
+
+    @Override
+    public void removeUpdate(DocumentEvent e) {
+        if (e.getDocument() == titleField.getDocument()) {
+            titleFieldLength = titleField.getText().length();
+        } else if (e.getDocument() == descriptionField.getDocument()) {
+            descriptionFieldLength = descriptionField.getText().length();
+        }
+    }
+
+    @Override
+    public void changedUpdate(DocumentEvent e) {
+        // Not needed
+    }
+
+    private void titleUpdate() {
+
+        if (titleField.getText().equals("Title")) {
+            titleFieldLength = 0;
+        }
+
+    }
+
+    @Override
+    public void mouseClicked(java.awt.event.MouseEvent e) {
+    }
+
+    @Override
+    public void mousePressed(java.awt.event.MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(java.awt.event.MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(java.awt.event.MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(java.awt.event.MouseEvent e) {
     }
 
 }
